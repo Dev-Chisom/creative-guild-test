@@ -1,37 +1,37 @@
 <template>
   <div class="profile">
     <!-- profile img -->
-    <div class="profile__details">
+    <div class="profile-details">
       <img
-        class="profile__details--img"
-        :src="`${publicPath}${landscapes.profile_picture}`"
+        class="profile-details__img"
+        :src="`${publicPath}${profileData.profile_picture}`"
         alt="profile image"
       />
       <div class="flex">
         <div>
-          <h2 class="profile__details--name">{{ landscapes.name }}</h2>
+          <h2 class="profile-details__name">{{ profileData.name }}</h2>
           <div>
-            <div class="profile__details--bio">
+            <div class="profile-details__bio">
               <small> Bio </small>
-              <p class="profile__details--info">
-                {{ landscapes.bio }}
+              <p class="profile-details__info">
+                {{ profileData.bio }}
               </p>
             </div>
           </div>
         </div>
 
         <div>
-          <ul class="profile__details--contact">
+          <ul class="profile-details__contact">
             <li>
               phone:<br />
-              <span class="profile__details--number">{{
-                landscapes.phone
+              <span class="profile-details__number">{{
+                profileData.phone
               }}</span>
             </li>
             <li>
               email:<br />
-              <span class="profile__details--email">{{
-                landscapes.email
+              <span class="profile-details__email">{{
+                profileData.email
               }}</span>
             </li>
           </ul>
@@ -50,12 +50,12 @@ export default {
     };
   },
   computed: {
-    landscapes() {
-      return this.$store.state.landscapes;
+    profileData() {
+      return this.$store.state.profileData;
     },
   },
   mounted() {
-    this.$store.dispatch("fetchLandscapes");
+    this.$store.dispatch("fetchProfileData");
   },
 };
 </script>
@@ -74,33 +74,33 @@ export default {
   padding: 2em 4em;
   margin: 2rem;
 
-  &__details {
+  &-details {
     display: flex;
     align-items: center;
-    &--img {
+    &__img {
       height: 150px;
       width: 150px;
       border-radius: 50%;
     }
-    &--name {
+    &__name {
       font-weight: 500;
       font-size: 1.8rem;
       line-height: 1.2em;
       margin-bottom: 1rem;
       margin-left: 1rem;
     }
-    &--bio small {
+    &__bio small {
       color: rgb(126, 121, 121);
       font-weight: 500;
       font-size: 1rem;
       margin-left: 1rem;
     }
-    &--info {
+    &__info {
       color: rgb(206, 199, 199);
       font-size: 0.8rem;
       margin-left: 1rem;
     }
-    &--contact {
+    &__contact {
       padding-top: 2.3rem;
       li {
         font-weight: 500;
@@ -117,9 +117,6 @@ export default {
     }
   }
 }
-@media (min-width: 690px) and (max-width: 110px) {
-}
-
 @media (min-width: 320px) and (max-width: 689px) {
   .flex {
     flex-direction: column;
@@ -128,16 +125,10 @@ export default {
   }
   .profile {
     flex-direction: column;
-    margin: 2rem;
 
-    &__details {
+    &-details {
       flex-direction: column;
     }
-  }
-}
-@media (min-width: 689px) and (max-width: 768px) {
-  .profile {
-    margin: 2rem;
   }
 }
 </style>

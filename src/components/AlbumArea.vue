@@ -1,21 +1,33 @@
 <template>
   <article class="cards">
-    <div v-for="album in landscapes.album" :key="album.id" class="card">
+    <div v-for="album in profileData.album" :key="album.id" class="card">
       <img :src="`${publicPath}${album.img}`" alt="John" class="card__img" />
       <div class="hide">
         <h3 class="card__title">{{ album.title }}</h3>
         <div class="card__content">
           <p class="card__desc">{{ album.description }}</p>
-          <div class="card__featured">
-            <p class="card__featured--icon" v-show="album.featured">Contact</p>
-            <p class="card__featured--date">{{ album.date }}</p>
+          <div class="card-featured">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="card-featured__icon"
+              v-show="album.featured"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <p class="card-featured__date">{{ album.date }}</p>
           </div>
         </div>
       </div>
-      <div class="card__middle">
-        <h3 class="card__middle--title">{{ album.title }}</h3>
+      <div class="card-middle">
+        <h3 class="card-middle__title">{{ album.title }}</h3>
 
-        <p class="card__middle--date">{{ album.date }}</p>
+        <p class="card-middle__date">{{ album.date }}</p>
       </div>
     </div>
   </article>
@@ -30,12 +42,12 @@ export default {
     };
   },
   computed: {
-    landscapes() {
-      return this.$store.state.landscapes;
+    profileData() {
+      return this.$store.state.profileData;
     },
   },
   mounted() {
-    this.$store.dispatch("fetchLandscapes");
+    this.$store.dispatch("fetchProfileData");
   },
 };
 </script>
@@ -43,18 +55,21 @@ export default {
 <style lang="scss" scoped>
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin: 0 2rem;
+  place-items: center;
+  margin: 2rem;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 350px;
+  width: 370px;
+  max-width: 100%;
   height: 300px;
   position: relative;
   border-radius: 5px;
   background-color: white;
   cursor: pointer;
+  margin: 0 1rem;
 
   &__img {
     width: 100%;
@@ -79,23 +94,24 @@ export default {
     font-size: 0.9rem;
     word-spacing: 4px;
   }
-  &__featured {
+  &-featured {
     display: flex;
     align-items: center;
     margin-top: 1.6rem;
 
-    &--icon {
-      display: flex;
-      justify-content: flex-start;
+    &__icon {
+      width: 18px;
+      height: 18px;
+      color: #fc5748;
     }
 
-    &--date {
+    &__date {
       color: rgb(206, 199, 199);
       font-size: 0.8rem;
       margin-left: auto;
     }
   }
-  &__middle {
+  &-middle {
     transition: 0.5s ease;
     opacity: 0;
     position: absolute;
@@ -105,7 +121,7 @@ export default {
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 
-    &--title {
+    &__title {
       font-weight: 500;
       font-size: 1.8rem;
       line-height: 1.2em;
@@ -118,54 +134,21 @@ export default {
   }
   .card:hover &__title,
   .card:hover &__desc,
-  .card:hover &__featured--icon,
-  .card:hover &__featured--date {
+  .card:hover &-featured__icon,
+  .card:hover &-featured__date {
     opacity: 0;
   }
-  .card:hover &__middle {
+  .card:hover &-middle {
     opacity: 1;
   }
 }
 @media (min-width: 320px) and (max-width: 520px) {
   .cards {
-    grid-template-columns: auto;
-  }
-  .card {
-    max-width: 100vw;
-    height: 350px;
     margin: 1rem;
-
-    &__details {
-      flex-direction: column;
-    }
-  }
-}
-@media (min-width: 521px) and (max-width: 650px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
   }
   .card {
-    max-width: 480px;
-    margin: 1.5rem auto;
-
-    &__details {
-      flex-direction: column;
-    }
-  }
-}
-@media (min-width: 652px) and (max-width: 860px) {
-  .cards {
-    place-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 2rem;
-  }
-  .card {
-    height: 350px;
+    width: 300px;
     max-width: 100%;
-
-    &__details {
-      flex-direction: column;
-    }
   }
 }
 </style>

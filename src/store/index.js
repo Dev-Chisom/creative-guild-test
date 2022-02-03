@@ -6,18 +6,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    landscapes: [],
+    profileData: [],
   },
   mutations: {
-    setLandscapes(state, landscapes) {
-      state.landscapes = landscapes;
+    setProfileData(state, profileData) {
+      state.profileData = profileData;
     },
   },
   actions: {
-    async fetchLandscapes({ commit }) {
+    async fetchProfileData({ commit }) {
       try {
-        const landscapes = await axios.get("/data/landscapes.json");
-        commit("setLandscapes", landscapes.data);
+        const profileData = await axios.get("/data/landscapes.json");
+        commit("setProfileData", profileData.data);
       } catch (error) {
         console.log(error);
         return error;
