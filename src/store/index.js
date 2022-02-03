@@ -16,9 +16,9 @@ export default new Vuex.Store({
   actions: {
     async fetchLandscapes({ commit }) {
       try {
-        const landscapes = await axios.get("../assets/landscapes.js");
-        console.log("logging ", landscapes);
-        commit("setLandscapes", landscapes);
+        const landscapes = await axios.get("/data/landscapes.json");
+        console.log("logging ", landscapes.data);
+        commit("setLandscapes", landscapes.data);
       } catch (error) {
         console.log(error);
         return error;

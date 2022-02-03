@@ -1,7 +1,5 @@
 <template>
-  <div class="album">
-    
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -11,7 +9,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.album {
+.card {
   margin-inline: 1em;
   border-radius: 10px;
 }

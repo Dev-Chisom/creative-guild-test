@@ -1,23 +1,40 @@
 <template>
   <div class="profile">
+    <!-- {{ landscapes }} -->
     <!-- profile img -->
-    <img class="img" src="" alt="profile image" />
-    <div class="">
-      <h2>name</h2>
-      <div class="bio">
-        <small> Bio </small>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sequi
-          fugiat corrupti quisquam numquam, minus repellendus soluta porro
-          veniam. Ipsam dignissimos quos natus? Repellat obcaecati, esse qui
-          repellendus, odio eveniet voluptatem aliquam aperiam provident porro
-          voluptatibus? Voluptatibus dolor accusamus veniam maxime optio,
-          suscipit pariatur numquam inventore odit aperiam facere harum.
-        </p>
+    <div class="profile__details">
+      <img
+        class="profile__details--img"
+        src="../assets/img/profile.jpeg"
+        alt="profile image"
+      />
+      <div class="flex">
         <div>
-          <ul class="contact">
-            <li>phone: 0807070</li>
-            <li>emal: lllneg</li>
+          <h2 class="profile__details--name">{{ landscapes.name }}</h2>
+          <div>
+            <div class="profile__details--bio">
+              <small> Bio </small>
+              <p class="profile__details--info">
+                {{ landscapes.bio }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ul class="profile__details--contact">
+            <li>
+              phone:<br />
+              <span class="profile__details--number">{{
+                landscapes.phone
+              }}</span>
+            </li>
+            <li>
+              email:<br />
+              <span class="profile__details--email">{{
+                landscapes.email
+              }}</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -26,56 +43,71 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
-import axios from "axios";
-import profile from "../assets/landscapes";
-
 export default {
   name: "ProfileSection",
-  data() {
-    return {};
+  computed: {
+    landscapes() {
+      return this.$store.state.landscapes;
+    },
   },
   mounted() {
-    this.fetchLandscapes();
-  },
-  methods: {
-    // ...mapActions({
-    //   fetchLandscapes: "fetchLandscapes",
-    // }),
-    async fetchLandscapes() {
-      try {
-        const landscapes = await axios.get(profile);
-        console.log("logging ", landscapes);
-      } catch (error) {
-        console.log(error);
-        return error;
-      }
-    },
+    this.$store.dispatch("fetchLandscapes");
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.flex {
+  display: flex;
+  align-items: center;
+}
 .profile {
   display: flex;
   background: white;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 2em;
-  padding: 2em 5em;
+  padding: 2em 4em;
 
-  .img {
-    height: 90px;
-    width: 90px;
-    border-radius: 50%;
-  }
-
-  .bio {
+  &__details {
     display: flex;
-
-    .contact {
+    align-items: center;
+    &--img {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+    }
+    &--name {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 1.2em;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+    }
+    &--bio small {
+      color: rgb(126, 121, 121);
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 1rem;
+    }
+    &--info {
+      color: rgb(206, 199, 199);
+      font-size: 0.8rem;
+      margin-left: 1rem;
+    }
+    &--contact {
+      padding-top: 2.3rem;
       li {
+        font-weight: 500;
+        font-size: 1rem;
         list-style: none;
+        color: rgb(126, 121, 121);
+        text-transform: capitalize;
+      }
+      span {
+        color: rgb(241, 145, 209);
+        font-size: 0.9rem;
+        font-weight: 500;
       }
     }
   }
