@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
-@use 'partials/resets';
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    box-sizing: border-box;
+    font-size: 14px;
+}
 
 html {
     font-family: 'Rubik-Regular', 'Rubik', 'Rubik-Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -15,5 +27,6 @@ html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
-    background: cornflowerblue
+    background: linear-gradient(to right, #CDE1E0 3.880983218550682%, 10.737386904656887%, #F8DBB9 17.593790590763092%, 24.06209632754326%, #7C6146 30.530402064323425%, 41.00905507802963%, #8C785F 51.48770809173584%, 64.29495513439178%, #AF9A9F 77.10220217704773%, 88.55110108852386%, #657390 100%);
+
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <profile-section class="profile" />
-    <album-area class="album" />
+    <profile-section />
+    <album-area />
   </div>
 </template>
 
@@ -21,12 +21,6 @@ export default {
 <style lang="scss">
 .container {
   max-width: 1000px;
-  margin: auto;
-  margin-top: 40px;
-  .profle {
-  }
-
-  .album {
-  }
+  margin: 40px auto;
 }
 </style>

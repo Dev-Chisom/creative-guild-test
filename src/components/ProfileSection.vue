@@ -1,6 +1,5 @@
 <template>
   <div class="profile">
-    <!-- {{ landscapes }} -->
     <!-- profile img -->
     <div class="profile__details">
       <img
@@ -68,6 +67,7 @@ export default {
   overflow: hidden;
   margin-bottom: 2em;
   padding: 2em 4em;
+  margin: 2rem;
 
   &__details {
     display: flex;
@@ -110,6 +110,29 @@ export default {
         font-weight: 500;
       }
     }
+  }
+}
+@media (min-width: 690px) and (max-width: 110px) {
+}
+
+@media (min-width: 320px) and (max-width: 689px) {
+  .flex {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+  .profile {
+    flex-direction: column;
+    margin: 2rem;
+
+    &__details {
+      flex-direction: column;
+    }
+  }
+}
+@media (min-width: 689px) and (max-width: 768px) {
+  .profile {
+    margin: 2rem;
   }
 }
 </style>
