@@ -4,7 +4,7 @@
     <div class="profile__details">
       <img
         class="profile__details--img"
-        src="../assets/img/profile.jpeg"
+        :src="require(`@/assets${landscapes.profile_picture}`)"
         alt="profile image"
       />
       <div class="flex">

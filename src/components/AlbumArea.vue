@@ -1,7 +1,11 @@
 <template>
   <article class="cards">
     <div v-for="album in landscapes.album" :key="album.id" class="card">
-      <img src="../assets/img/landscape1.jpeg" alt="John" class="card__img" />
+      <img
+        :src="require(`@/assets${album.img}`)"
+        alt="John"
+        class="card__img"
+      />
       <div class="hide">
         <h3 class="card__title">{{ album.title }}</h3>
         <div class="card__content">
@@ -110,7 +114,6 @@ export default {
 
   .card:hover &__img {
     opacity: 0.3;
-    height: 100%;
   }
   .card:hover &__title,
   .card:hover &__desc,
