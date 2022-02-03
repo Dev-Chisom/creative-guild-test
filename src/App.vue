@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <profile-section class="profile" />
+    <album-area class="album" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import AlbumArea from "./components/AlbumArea.vue";
+import ProfileSection from "./components/ProfileSection.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    ProfileSection,
+    AlbumArea,
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 40px;
+  .profle{
+  }
+
+  .album {
+  }
 }
 </style>
