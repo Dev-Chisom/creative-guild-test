@@ -1,11 +1,7 @@
 <template>
   <article class="cards">
     <div v-for="album in landscapes.album" :key="album.id" class="card">
-      <img
-        :src="require(`@/assets${album.img}`)"
-        alt="John"
-        class="card__img"
-      />
+      <img :src="`${publicPath}${album.img}`" alt="John" class="card__img" />
       <div class="hide">
         <h3 class="card__title">{{ album.title }}</h3>
         <div class="card__content">
@@ -28,6 +24,11 @@
 <script>
 export default {
   name: "AlbumArea",
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
   computed: {
     landscapes() {
       return this.$store.state.landscapes;

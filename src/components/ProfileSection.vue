@@ -4,7 +4,7 @@
     <div class="profile__details">
       <img
         class="profile__details--img"
-        :src="require(`@/assets${landscapes.profile_picture}`)"
+        :src="`${publicPath}${landscapes.profile_picture}`"
         alt="profile image"
       />
       <div class="flex">
@@ -44,6 +44,11 @@
 <script>
 export default {
   name: "ProfileSection",
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
   computed: {
     landscapes() {
       return this.$store.state.landscapes;
