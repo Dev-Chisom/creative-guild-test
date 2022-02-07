@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "AlbumArea",
   data() {
@@ -42,9 +43,7 @@ export default {
     };
   },
   computed: {
-    profileData() {
-      return this.$store.state.profileData;
-    },
+    ...mapGetters({ profileData: "profileData" }),
   },
   mounted() {
     this.$store.dispatch("fetchProfileData");
